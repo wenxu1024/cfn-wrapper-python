@@ -38,6 +38,8 @@ def wrap_user_handler(func, base_response=None):
         }
         if event.get("PhysicalResourceId", False):
             response["PhysicalResourceId"] = event["PhysicalResourceId"]
+        else:
+            response["PhysicalResourceId"] = context.log_stream_name
 
         if base_response is not None:
             response.update(base_response)
